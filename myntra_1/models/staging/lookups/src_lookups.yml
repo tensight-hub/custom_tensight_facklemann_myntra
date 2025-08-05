@@ -1,0 +1,7 @@
+version: 2
+
+sources:
+    - name: lookups
+      schema: custom_tensight_facklemann_raw
+      tables:
+        - name: product_master

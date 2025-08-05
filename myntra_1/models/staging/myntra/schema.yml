@@ -1,0 +1,12 @@
+version: 2
+
+sources:
+  - name: myntra
+    schema: custom_tensight_facklemann_raw  # your Athena schema name
+    tables:
+      - name: inventory_myntra
+      - name: sales_myntra
+      - name: product_master
+
+
+       
