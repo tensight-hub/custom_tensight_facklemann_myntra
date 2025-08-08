@@ -7,6 +7,7 @@ sources:
       - name: inventory_myntra
       - name: sales_myntra
       - name: product_master
+      - name: sov_myntra
 
 
        
