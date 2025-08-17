@@ -14,7 +14,7 @@ renamed as (
         "item code" as item_code,
         "front end id" as frontend_id,
         ean,
-        "master product name" as master_product_name,
+        "master product name" as sku_name,
         "varient product name" as variant_product_name,
         title,
         grammage,

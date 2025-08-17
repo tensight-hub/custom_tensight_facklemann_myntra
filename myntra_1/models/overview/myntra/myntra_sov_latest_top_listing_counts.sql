@@ -1,63 +1,65 @@
 {{ config(
-    materialized='table'
+    materialized='table',
+    partitioned_by=['brand', 'platform', 'date']
 ) }}
 
-with max_dates as (
-    select
+WITH
+
+{% if is_incremental() %}
+
+latest_dates AS (
+    SELECT
         platform,
-        max(cast(date_trunc('day', datetime) as date)) as max_date
-    from {{ ref('stg_sov_myntra') }}
-    group by platform
+        brand,
+        MAX(DATE(datetime)) AS max_date
+    FROM {{ ref('stg_sov_myntra') }}
+    GROUP BY platform, brand
 ),
 
-filtered_data as (
-    select
-        r.keyword,
-        concat(r.location, ' - ', cast(r.pincode as varchar)) as pincode,
-        r.brand as brand_name,
-        cast(r.search_rank as int) as best_rank,
-        r.city_name,
-        r.tier,
-        r.product_name,
-        r.grammage,
-        r.mrp,
-        r.selling_price,
-        r.listing_type,
-        r.keyword_type,
-        r.discount_percent,
-        r.platform,
-        cast(date_trunc('day', r.datetime) as date) as date
-    from {{ ref('stg_sov_myntra') }} r
-    join max_dates md
-      on r.platform = md.platform
-     and cast(date_trunc('day', r.datetime) as date) = md.max_date
-),
-
-ranked_data as (
-    select
-        *,
-        row_number() over (
-            partition by platform, keyword, pincode, listing_type, brand_name
-            order by best_rank asc
-        ) as row_num
-    from filtered_data
+sov_filtered AS (
+    SELECT x.*
+    FROM {{ ref('stg_sov_myntra') }} x
+    JOIN latest_dates l
+      ON x.platform = l.platform
+     AND x.brand = l.brand
+     AND DATE(x.datetime) = l.max_date
+    WHERE x.search_rank < 11
 )
 
-select
-    keyword,
-    pincode,
-    brand_name,
-    best_rank,
-    city_name,
-    tier,
-    product_name,
-    grammage,
-    mrp,
-    selling_price,
-    listing_type,
-    keyword_type,
-    discount_percent,
-    platform,
-    date
-from ranked_data
-where row_num = 1
+{% else %}
+
+sov_filtered AS (
+    SELECT *
+    FROM {{ ref('stg_sov_myntra') }}
+    WHERE search_rank < 11
+)
+
+{% endif %}
+
+SELECT
+    COALESCE(x.location, 'NA') || ' - ' || CAST(x.pincode AS VARCHAR) AS pincode,
+    x.city_name,
+    x.tier,
+    x.keyword,
+    x.keyword_type,
+    x.listing_type,
+
+    SUM(CASE WHEN x.brand_visibility = 1 THEN 1 ELSE 0 END) AS listing_count_brand,
+    COUNT(x.search_rank) AS overall_listing_count,
+
+    x.brand,
+    x.platform,
+    DATE(x.datetime) AS date
+
+FROM sov_filtered x
+
+GROUP BY
+    COALESCE(x.location, 'NA') || ' - ' || CAST(x.pincode AS VARCHAR),
+    x.city_name,
+    x.tier,
+    x.keyword,
+    x.keyword_type,
+    x.listing_type,
+    x.brand,
+    x.platform,
+    DATE(x.datetime)
