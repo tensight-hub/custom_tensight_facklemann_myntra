@@ -13,3 +13,33 @@ Runtime Error
 [0m17:43:43.742413 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AC7EA6F5C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AC7EA8A0F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001AC7EBFC5A0>]}
 [0m17:43:43.742705 [debug] [MainThread]: Flushing usage events
 [0m17:43:45.137410 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:18:08.473063 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE7ECFB60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE92B3ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE92B3C50>]}
+
+
+============================== 21:18:08.485623 | 772fa7dc-5694-442f-842e-7b3de082b2a6 ==============================
+[0m21:18:08.485623 [info ] [MainThread]: Running with dbt=1.10.7
+[0m21:18:08.487111 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'write_json': 'True', 'log_cache_events': 'False', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\Dell\\.dbt', 'version_check': 'True', 'fail_fast': 'False', 'log_path': 'logs', 'warn_error': 'None', 'debug': 'False', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'static_parser': 'True', 'log_format': 'default', 'introspect': 'True', 'target_path': 'None', 'invocation_command': 'dbt run --select staging.myntra.stg_inventory_myntrar', 'send_anonymous_usage_stats': 'True'}
+[0m21:18:08.487504 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\Dell\custom_tensight_facklemann_myntra\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m21:18:08.488654 [debug] [MainThread]: Command `dbt run` failed at 21:18:08.488522 after 0.28 seconds
+[0m21:18:08.489004 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE91A35C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE91BA0F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x0000013DE932C5A0>]}
+[0m21:18:08.489322 [debug] [MainThread]: Flushing usage events
+[0m21:18:09.691833 [debug] [MainThread]: An error was encountered while trying to flush usage events
+[0m21:18:24.695744 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'start', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E242AEFB60>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E244EA3ED0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E244EA3C50>]}
+
+
+============================== 21:18:24.699866 | 6439d064-dff6-476f-818e-e28516f91613 ==============================
+[0m21:18:24.699866 [info ] [MainThread]: Running with dbt=1.10.7
+[0m21:18:24.700854 [debug] [MainThread]: running dbt with arguments {'printer_width': '80', 'indirect_selection': 'eager', 'log_cache_events': 'False', 'write_json': 'True', 'partial_parse': 'True', 'cache_selected_only': 'False', 'profiles_dir': 'C:\\Users\\Dell\\.dbt', 'debug': 'False', 'warn_error': 'None', 'log_path': 'logs', 'fail_fast': 'False', 'version_check': 'True', 'use_colors': 'True', 'use_experimental_parser': 'False', 'empty': 'False', 'quiet': 'False', 'no_print': 'None', 'warn_error_options': 'WarnErrorOptionsV2(error=[], warn=[], silence=[])', 'invocation_command': 'dbt run --select staging.myntra.stg_inventory_myntra', 'introspect': 'True', 'static_parser': 'True', 'target_path': 'None', 'log_format': 'default', 'send_anonymous_usage_stats': 'True'}
+[0m21:18:24.701275 [error] [MainThread]: Encountered an error:
+Runtime Error
+  No dbt_project.yml found at expected path C:\Users\Dell\custom_tensight_facklemann_myntra\dbt_project.yml
+  Verify that each entry within packages.yml (and their transitive dependencies) contains a file named dbt_project.yml
+  
+[0m21:18:24.702201 [debug] [MainThread]: Command `dbt run` failed at 21:18:24.702007 after 0.13 seconds
+[0m21:18:24.702482 [debug] [MainThread]: Sending event: {'category': 'dbt', 'action': 'invocation', 'label': 'end', 'context': [<snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E243DBF5C0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E243DDA0F0>, <snowplow_tracker.self_describing_json.SelfDescribingJson object at 0x000001E244F1C5A0>]}
+[0m21:18:24.702776 [debug] [MainThread]: Flushing usage events
+[0m21:18:25.882892 [debug] [MainThread]: An error was encountered while trying to flush usage events
