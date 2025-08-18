@@ -32,8 +32,8 @@ SELECT
     m.date,
     m.current_soh,
     REGEXP_REPLACE(CAST(pm.ean AS varchar), '\.0$', '') AS ean,
-    pm.sku_name,               
-    pm.variant_product_name,   
+    pm.sku_name,
+    pm.variant_product_name,
     pm.title,
     pm.grammage,
     pm.subcategory,
@@ -42,4 +42,4 @@ SELECT
     m.platform
 FROM myntra_stock m
 LEFT JOIN {{ ref('stg_lookups__product_master') }} pm
-  ON CAST(m.sku_id AS varchar) = CAST(pm."item_code" AS varchar)
+  ON CAST(m.sku_id AS varchar) = CAST(pm.item_code AS varchar)
