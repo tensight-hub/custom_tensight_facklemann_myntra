@@ -8,6 +8,7 @@ sources:
       - name: sales_myntra
       - name: product_master
       - name: sov_myntra
+      - name: price_parity_myntra
 
 
        
