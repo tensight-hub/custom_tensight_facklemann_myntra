@@ -5,6 +5,7 @@
 ) }}
 
 SELECT 
+    sales.style_id,
     sales.order_date,
     product.category,
     product.subcategory,
@@ -20,6 +21,7 @@ LEFT JOIN {{ ref('stg_lookups__product_master') }} AS product
     ON CAST(sales.style_id AS VARCHAR) = product.item_code
 
 GROUP BY 
+    sales.style_id,
     product.sku_name,
     sales.order_date,
     product.category,
