@@ -9,6 +9,10 @@ sources:
       - name: product_master
       - name: sov_myntra
       - name: price_parity_myntra
+      
 
-
-       
+  - name: myntra_overview 
+    schema: custom_tensight_facklemann_raw_overview
+    tables:
+       - name: myntra_sku_category_sales_summary
+       - name: myntra_soh_report_trend
