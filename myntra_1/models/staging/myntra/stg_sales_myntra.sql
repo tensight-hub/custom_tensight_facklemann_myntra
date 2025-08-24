@@ -11,7 +11,7 @@ renamed as (
 
     select
         -- Parse the date if it's in yyyymmdd format
-        DATE_PARSE(CAST(ord_month AS VARCHAR), '%Y%m%d') AS order_date,
+        CAST(DATE_PARSE(CAST(ord_month AS VARCHAR), '%Y%m%d') AS DATE) AS order_date,
 
         -- Keep original column names or rename to snake_case if needed
         style_id,
